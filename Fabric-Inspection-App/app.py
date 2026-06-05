@@ -5,9 +5,7 @@ import tempfile
 import os
 
 # Load the model you just trained
-model_path = "/content/runs/detect/train/weights/best.pt"
-if os.path.exists(model_path):
-    model = YOLO(model_path)
+model = YOLO("best.pt")
 else:
     st.error("Model file not found. Please check the path.")
 
