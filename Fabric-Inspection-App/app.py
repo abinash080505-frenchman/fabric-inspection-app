@@ -33,7 +33,7 @@ if uploaded_file is not None:
     st.image(annotated_image, use_container_width=True)
 
     # Temporary save for YOLO
-image = image.convert("RGB")
+
 
 with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
     image.save(tmp.name, format="JPEG")
