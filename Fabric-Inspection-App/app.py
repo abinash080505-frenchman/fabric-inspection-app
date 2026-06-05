@@ -17,9 +17,10 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Temporary save for YOLO
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
-        image.save(tmp.name)
-        results = model(tmp.name)
+with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
+    image = image.convert("RGB")
+    image.save(tmp.name, format="JPEG")
+    results = model(tmp.name)
 
     # Show Result
     annotated_image = results[0].plot()
