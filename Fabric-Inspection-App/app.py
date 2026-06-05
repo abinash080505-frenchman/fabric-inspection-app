@@ -6,8 +6,6 @@ import os
 
 # Load the model you just trained
 model = YOLO("best.pt")
-else:
-    st.error("Model file not found. Please check the path.")
 
 st.title("🧵 AI Fabric Quality Inspection System")
 st.write("Upload a fabric image to detect defects.")
