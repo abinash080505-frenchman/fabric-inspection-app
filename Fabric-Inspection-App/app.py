@@ -14,14 +14,26 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
+
+    image = image.convert("RGB")
+
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
+        image.save(tmp.name, format="JPEG")
+        results = model(tmp.name)
+
+    annotated_image = results[0].plot()
+
+    st.subheader("🔍 Detection Result")
+    st.image(annotated_image, use_container_width=True)
+
     # Temporary save for YOLO
+image = image.convert("RGB")
+
 with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
-    image = image.convert("RGB")
     image.save(tmp.name, format="JPEG")
     results = model(tmp.name)
-
     # Show Result
     annotated_image = results[0].plot()
     st.subheader("🔍 Detection Result")
