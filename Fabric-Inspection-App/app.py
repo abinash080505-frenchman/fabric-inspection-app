@@ -5,7 +5,7 @@ import tempfile
 import os
 
 # Load the model you just trained
-model = YOLO("best.pt")
+model = YOLO("Fabric-Inspection-App/best.pt")
 
 st.title("🧵 AI Fabric Quality Inspection System")
 st.write("Upload a fabric image to detect defects.")
