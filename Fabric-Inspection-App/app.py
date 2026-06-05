@@ -38,14 +38,6 @@ if uploaded_file is not None:
 
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
-        image.save(tmp.name, "JPEG")
-        results = model(tmp.name)
-
-    annotated_image = results[0].plot()
-
-    st.subheader("🔍 Detection Result")
-    st.image(annotated_image, use_container_width=True)
 
     # Temporary save for YOLO
 
