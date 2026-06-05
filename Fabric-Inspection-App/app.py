@@ -5,7 +5,12 @@ import tempfile
 import os
 
 # Load the model you just trained
-model = YOLO("Fabric-Inspection-App/best.pt")
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "best.pt")
+
+model = YOLO(MODEL_PATH)
 
 st.title("🧵 AI Fabric Quality Inspection System")
 st.write("Upload a fabric image to detect defects.")
